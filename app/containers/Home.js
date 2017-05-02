@@ -5,12 +5,13 @@ import {
   Text
   } from 'react-native';
 
+import Main from '../components/Main';
+
+
 class Home extends Component {
   render() {
     return (
-      <View>
-        <Text style={{height: 200, lineHeight: 200, textAlign: 'center'}}>Album</Text>
-      </View>
+      <Main />
     );
   }
 }
