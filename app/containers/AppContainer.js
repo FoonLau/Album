@@ -16,4 +16,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect((state) => {return {}}, mapDispatchToProps)(AppContainer);
+export default connect(() => {return {}}, mapDispatchToProps)(AppContainer);
