@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  View,
-  Text
-  } from 'react-native';
-
+import { navigate } from '../actions';
 import Main from '../components/Main';
 
 
 class Home extends Component {
+
   render() {
-    return (
-      <Main />
-    );
+    const {currentScreen} = this.props;
+
+    return <Main />
   }
 }
 
-export default connect(() => {return {}})(Home);
+export default Home;
