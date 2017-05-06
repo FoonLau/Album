@@ -5,6 +5,7 @@ export default function settings(state = {}, action) {
 
   switch (action.type) {
     case types.UPDATE_SETTING:
+      nextState = Object.assign({}, state, action.data);
       break;
     default:
       nextState = state;
