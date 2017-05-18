@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { NavigatorIOS } from 'react-native';
+import { View, Modal, NavigatorIOS } from 'react-native';
+import CameraRollPicker from 'react-native-camera-roll-picker';
 import PhotoList from './PhotoList';
 
 const photos = [
@@ -21,6 +22,9 @@ class PhotoScreen extends Component {
     super(props);
     this.onLeftButtonPress = this.onLeftButtonPress.bind(this);
     this.onRightButtonPress = this.onRightButtonPress.bind(this);
+    this.state = {
+      modalVisible: false,
+    };
   }
 
   onLeftButtonPress() {
@@ -28,23 +32,36 @@ class PhotoScreen extends Component {
   }
 
   onRightButtonPress() {
-    console.log(this);
+    this.setModalVisible(true);
+  }
+
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible });
   }
 
   render() {
     return (
-      <NavigatorIOS
-        initialRoute={{
-          component: PhotoList,
-          title: 'Photos',
-          passProps: { photoCollections: sections },
-        }}
-        style={{ flex: 1 }}
-        leftButtonIcon={{}}
-        rightButtonIcon={{}}
-        onLeftButtonPress={this.onLeftButtonPress}
-        onRightButtonPress={this.onRightButtonPress}
-      />
+      <View style={{ flex: 1 }}>
+        <Modal
+          animationType={'fade'}
+          transparent={false}
+          visible={this.state.modalVisible}
+        >
+          <CameraRollPicker />
+        </Modal>
+        <NavigatorIOS
+          initialRoute={{
+            component: PhotoList,
+            title: 'Photos',
+            passProps: { photoCollections: sections },
+          }}
+          style={{ flex: 1 }}
+          leftButtonIcon={{}}
+          rightButtonTitle="+"
+          onLeftButtonPress={this.onLeftButtonPress}
+          onRightButtonPress={this.onRightButtonPress}
+        />
+      </View>
     );
   }
 }
