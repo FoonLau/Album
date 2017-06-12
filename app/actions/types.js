@@ -10,3 +10,6 @@ export const DELETE_ALBUM = 'DELETE_ALBUM';
 
 // setting actions
 export const UPDATE_SETTING = 'UPDATE_SETTING';
+
+// navigate action
+export const NAVIGATE = 'NAVIGATE';
